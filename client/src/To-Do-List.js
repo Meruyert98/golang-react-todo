@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Card, Header, Form, Input, Icon } from "semantic-ui-react";
 
-let endpoint = "http://localhost:9000";
+let endpoint = "http://localhost:8081";
 
 class ToDoList extends Component {
   constructor(props) {
@@ -72,13 +72,13 @@ class ToDoList extends Component {
                   <Icon
                     name="check circle"
                     color="blue"
-                    onClick={() => this.updateTask(item, _id)}
+                    onClick={() => this.updateTask(item._id)}
                   />
                   <span style={{ paddingRight: 10 }}>Undo</span>
                   <Icon
                     name="delete"
                     color="red"
-                    onClick={() => this.deleteTask(item, _id)}
+                    onClick={() => this.deleteTask(item._id)}
                   />
                   <span style={{ paddingRight: 10 }}>Delete</span>
                 </Card.Meta>
