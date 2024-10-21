@@ -1,4 +1,4 @@
-version: "3.8"
+# version: "3.8"
 
 services:
   mongodb:
@@ -20,8 +20,10 @@ services:
       - "8081:8081"
     depends_on:
       - mongodb
-    env_file:
-      - ./server/.env
+    environment:
+      - DB_URI=mongodb://root:password@mongodb:27017 # Use the correct MongoDB port
+      - DB_NAME=test
+      - DB_COLLECTION_NAME=todolist
 
   frontend:
     build:
@@ -30,6 +32,8 @@ services:
     container_name: react-frontend
     ports:
       - "3000:80"
+    environment:
+      - REACT_APP_API_ENDPOINT=${REACT_APP_API_ENDPOINT}
 
 volumes:
   mongo-data:
