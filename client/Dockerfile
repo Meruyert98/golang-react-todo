@@ -10,6 +10,10 @@ RUN npm install
 
 COPY . .
 
+# Set environment variable for the API endpoint
+ARG REACT_APP_API_ENDPOINT
+ENV REACT_APP_API_ENDPOINT=${REACT_APP_API_ENDPOINT}
+
 # Build the project
 RUN npm run build
 
